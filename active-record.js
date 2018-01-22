@@ -33,33 +33,16 @@ ActiveRecord .result = {
 
 ActiveRecord .result ._orderBy = function ( prop, order ) { 
 	
-	this .data .sort( function ( a, b ) { 
-		
+	this .data .sort( ( a, b ) => { 
+		let 
+			  [ ap, bp ] = [ a, b ] .map( o => o[ prop ] ) 
+			, ascOrder = ap > bp ? 1 : bp > ap ? -1 : 0 
+			; 
 		if ( "ASC" === order ) { 
-			
-			if ( a[ prop ] > b[ prop ] ) { 
-				return 1; 
-				} 
-			else { 
-				if ( b[ prop ] > a[ prop ] ) 
-					return -1; 
-				else 
-					return 0; 
-				} 
-			
+			return ascOrder; 
 			} 
 		else if ("DESC" === order) { 
-			
-			if ( b[ prop ] > a[ prop ] ) { 
-				return 1; 
-            } 
-			else { 
-				if ( a[ prop ] > b[ prop ] ) 
-					return -1; 
-				else 
-					return 0; 
-            } 
-			
+			return - ascOrder; 
 			} 
 		} ); // -- this .data .sort() 
 	
