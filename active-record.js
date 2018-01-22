@@ -68,12 +68,12 @@ ActiveRecord .result ._where = function () {
 				temp = []; 
 				} 
 			
-			for ( var j = 0; j < data .length; j++ ) { 
-				if ( data[ j ][ key ] === where[ i ][ key ] && temp .indexOf( data[ j ] ) === -1 ) { 
-					temp .push( data[ j ] ); 
+			data .forEach( ( v, j ) => {
+				if ( v[ key ] === where[ i ][ key ] && temp .indexOf( v ) === -1 ) { 
+					temp .push( v ); 
 					this .list .push( j ); 
 					} 
-				} 
+				} ); 
 			
 			step++; 
 			
