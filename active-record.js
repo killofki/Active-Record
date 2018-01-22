@@ -91,7 +91,7 @@ ActiveRecord .result ._where = function () {
 		
 		} 
 	
-	this.data = ortemp; 
+	this .data = ortemp; 
 	
 	}; // -- ._where 
 
@@ -114,7 +114,7 @@ ActiveRecord .result ._select = function ( select ) {
 					} 
 				} 
 			} // -- for( j ) 
-		if (step > 0) { 
+		if ( step > 0 ) { 
 			temp .push( tempObj ); 
 			} 
 		} // -- for ( i ) 
