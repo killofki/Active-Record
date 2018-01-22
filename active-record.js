@@ -18,11 +18,8 @@ ActiveRecord .result = {
 	, list : [] 
 	}; 
 
-ActiveRecord .orderBy = function ( prop, order ) { 
-	this .result .query .orderBy = { 
-		  prop 
-		, "order" : order || "ASC" 
-		}; 
+ActiveRecord .orderBy = function ( prop, order = "ASC" ) { 
+	this .result .query .orderBy = { prop, order }; 
 	return this; 
 	}; 
 
@@ -31,11 +28,8 @@ ActiveRecord .where = function ( where ) {
 	return this; 
 	}; 
 
-ActiveRecord .limit = function ( limit, start ) { 
-	this .result .query .limit = { 
-		  limit 
-		, "start" : start || 0 
-		}; 
+ActiveRecord .limit = function ( limit, start = 0 ) { 
+	this .result .query .limit = { limit, start }; 
 	return this; 
 	}; 
 
