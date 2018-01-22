@@ -41,7 +41,7 @@ ActiveRecord .result ._orderBy = function ( prop, order ) {
 		if ( "ASC" === order ) { 
 			return ascOrder; 
 			} 
-		else if ("DESC" === order) { 
+		else if ( "DESC" === order ) { 
 			return - ascOrder; 
 			} 
 		} ); // -- this .data .sort() 
