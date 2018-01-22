@@ -8,7 +8,14 @@
 <script src="./active-record.js" ></script> 
 <script> 
 
-
+console .log( JSON .stringify( 
+	ActiveRecord 
+	.where( { a : 1, b : 2 } ) 
+	.select( 'a', 'c' ) 
+	.orderBy( 'c', 'DESC' ) 
+	.limit( 10 ) 
+	.get( [ { a : 1, b : 2, c : 3 }, { a : 1, b : 2 }, { a : 1, b : 2, c : 4 } ] ) 
+	) ); 
 
 	</script> 
 
