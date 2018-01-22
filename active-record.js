@@ -49,12 +49,14 @@ ActiveRecord .result ._orderBy = function ( prop, order ) {
 	}; // -- .orderBy 
 
 ActiveRecord .result ._where = function () { 
-	var where   = this .query .where; 
-	var data    = [] .concat( this .data ); 
-	var temp    = []; 
-	var ortemp  = []; 
-	var step    = 0; 
-	var key; 
+	var 
+		  where   = this .query .where
+		, data    = [] .concat( this .data ) 
+		, temp    = [] 
+		, ortemp  = [] 
+		, step    = 0 
+		, key 
+		; 
 	
 	where = where .length && typeof where === "object" ? where : [ where ]; 
 	
