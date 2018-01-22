@@ -20,7 +20,7 @@ ActiveRecord .result = {
 
 ActiveRecord .orderBy = function ( prop, order ) { 
 	this .result .query .orderBy = { 
-		  "prop" : prop 
+		  prop 
 		, "order" : order || "ASC" 
 		}; 
 	return this; 
@@ -33,7 +33,7 @@ ActiveRecord .where = function ( where ) {
 
 ActiveRecord .limit = function ( limit, start ) { 
 	this .result .query .limit = { 
-		  "limit" : limit 
+		  limit 
 		, "start" : start || 0 
 		}; 
 	return this; 
