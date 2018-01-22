@@ -39,12 +39,11 @@ ActiveRecord .result ._orderBy = function ( prop, order ) {
 			, ascOrder = ap > bp ? 1 : bp > ap ? -1 : 0 
 			, eqOrder = ap === bp ? 0 : ap === undefined ? 1 : -1 
 			; 
-		if ( "ASC" === order ) { 
-			return ascOrder || eqOrder; 
-			} 
-		else if ( "DESC" === order ) { 
-			return ( - ascOrder ) || eqOrder; 
-			} 
+		return ( 
+			[ { ASC : ascOrder, DESC : - ascOrder }[ order ] ] 
+			.map( v => v !== undefined ? v || eqOrder : undefined ) 
+			.find( v => v !== undefined ) 
+			); 
 		} ); // -- this .data .sort() 
 	
 	}; // -- .orderBy 
