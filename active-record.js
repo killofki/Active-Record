@@ -95,8 +95,7 @@ ActiveRecord .result ._where = function () {
 	
 	}; // -- ._where 
 
-ActiveRecord .result ._limit = function ( limit, start ) { 
-	start = start ? start : 0; 
+ActiveRecord .result ._limit = function ( limit, start = 0 ) { 
 	this .data = this .data .slice( start, limit ); 
 	}; // -- .limit 
 
