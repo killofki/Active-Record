@@ -114,9 +114,7 @@ ActiveRecord .result ._select = function ( select ) {
 					} 
 				} 
 			} // -- for( j ) 
-		if ( step > 0 ) { 
-			temp .push( tempObj ); 
-			} 
+		step > 0 && temp .push( tempObj ); 
 		} // -- for ( i ) 
 	this .data = temp; 
 	
@@ -133,17 +131,14 @@ ActiveRecord .get = function ( data ) {
 	
 	var Query = this .result .query; 
 	
-	if ( Query .orderBy ) 
-		this .result ._orderBy( Query .orderBy .prop, Query .orderBy .order ); 
-	
-	if ( Query .where ) 
-		this .result ._where( Query .where ); 
-	
-	if ( Query .select ) 
-		this .result ._select( Query .select ); 
-	
-	if ( Query .limit ) 
-		this .result ._limit( Query .limit .limit, Query .limit .start ); 
+	[ 
+		  [ 'orderBy', ( tr, o ) => tr ._orderBy( o .prop, o .order ) ] 
+		, [ 'where', ( tr, o ) => tr ._where( o ) ] 
+		, [ 'select', ( tr, o ) => tr ._select( o ) ] 
+		, [ 'limit', ( tr, o ) => tr ._limit( o .limit, o .start ) ] 
+		] 
+	.forEach( ( [ p, F ] ) => Query[ p ] && F( this .result, Query[ p ] ) ) 
+		; 
 	
 	return this .result .data; 
 	}; // -- .get 
