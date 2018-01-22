@@ -25,10 +25,10 @@ ActiveRecord .result = {
 	, [ 'select', ( ... ar ) => ar ] 
 	] 
 .forEach( ( [ p, F ] ) => 
-	ActiveRecord[ p ] = ( p => ( function( ... ar ) {
+	ActiveRecord[ p ] = ( p => ( function( ... ar ) { 
 		this .result .query[ p ] = F .apply( this, ar ); 
 		return this; 
-		} )( p )
+		} )( p ) 
 	); 
 
 ActiveRecord .result ._orderBy = function ( prop, order ) { 
@@ -100,12 +100,16 @@ ActiveRecord .result ._limit = function ( limit, start = 0 ) {
 	}; // -- .limit 
 
 ActiveRecord .result ._select = function ( select ) { 
-	var columns = select; 
-	var temp = []; 
-	var key; 
+	var 
+		  columns = select 
+		, temp = [] 
+		, key 
+		; 
 	for ( var i = 0; i < this .data .length; i++ ) { 
-		var tempObj = {}; 
-		var step = 0; 
+		var 
+			  tempObj = {} 
+			, step = 0 
+			; 
 		for ( var j = 0; j < columns .length; j++ ) { 
 			for ( key in this .data[ i ] ) { 
 				if ( key == columns[ j ] ) { 
