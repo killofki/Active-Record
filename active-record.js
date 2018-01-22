@@ -68,7 +68,7 @@ ActiveRecord .result ._where = function () {
 				temp = []; 
 				} 
 			
-			data .forEach( ( v, j ) => {
+			data .forEach( ( v, j ) => { 
 				if ( v[ key ] === where[ i ][ key ] && temp .indexOf( v ) === -1 ) { 
 					temp .push( v ); 
 					this .list .push( j ); 
@@ -80,11 +80,11 @@ ActiveRecord .result ._where = function () {
 			
 			} 
 		
-		for ( var k = 0; k < temp .length; k++ ) { 
-			if ( ortemp .indexOf( temp[ k ] ) === -1 ) { 
-				ortemp .push( temp[ k ] ); 
+		temp .forEach( ( v, k ) => { 
+			if ( ortemp .indexOf( v ) === -1 ) { 
+				ortemp .push( v ); 
 				} 
-			} 
+			} ); 
 		data = [] .concat( this .data ); 
 		temp = []; 
 		step = 0; 
