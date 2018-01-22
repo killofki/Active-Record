@@ -81,7 +81,7 @@ ActiveRecord .result ._where = function () {
 			} 
 		
 		for ( var k = 0; k < temp .length; k++ ) { 
-			if ( ortemp .indexOf( temp[ k ] ) === -1) { 
+			if ( ortemp .indexOf( temp[ k ] ) === -1 ) { 
 				ortemp .push( temp[ k ] ); 
 				} 
 			} 
