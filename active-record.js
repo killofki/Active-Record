@@ -4,6 +4,9 @@
 	Github: github.com/aykutkardas 
 */ 
 
+// original from https://github.com/aykutkardas/Active-Record 
+// viral https://plus.google.com/+AykutKarda%C5%9FZ/posts/f1vUgFVW4WX 
+
 /* eslint-disable no-whitespace-before-property */ 
 
 var ActiveRecord = ActiveRecord || {}; 
