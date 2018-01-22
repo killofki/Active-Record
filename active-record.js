@@ -28,7 +28,7 @@ ActiveRecord .result = {
 	ActiveRecord[ p ] = ( p => ( function( ... ar ) { 
 		this .result .query[ p ] = F .apply( this, ar ); 
 		return this; 
-		} )( p ) 
+		} ) )( p ) 
 	); 
 
 ActiveRecord .result ._orderBy = function ( prop, order ) { 
