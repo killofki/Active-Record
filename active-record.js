@@ -80,11 +80,7 @@ ActiveRecord .result ._where = function () {
 			
 			} 
 		
-		temp .forEach( ( v, k ) => { 
-			if ( ortemp .indexOf( v ) === -1 ) { 
-				ortemp .push( v ); 
-				} 
-			} ); 
+		temp .forEach( v => ortemp .indexOf( v ) === -1 && ortemp .push( v ) ); 
 		data = [] .concat( this .data ); 
 		temp = []; 
 		step = 0; 
