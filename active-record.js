@@ -18,25 +18,18 @@ ActiveRecord .result = {
 	, list : [] 
 	}; 
 
-ActiveRecord .orderBy = function ( prop, order = "ASC" ) { 
-	this .result .query .orderBy = { prop, order }; 
-	return this; 
-	}; 
-
-ActiveRecord .where = function ( where ) { 
-	this .result .query .where = where; 
-	return this; 
-	}; 
-
-ActiveRecord .limit = function ( limit, start = 0 ) { 
-	this .result .query .limit = { limit, start }; 
-	return this; 
-	}; 
-
-ActiveRecord .select = function ( ... ar ) { 
-	this .result .query .select = ar; 
-	return this; 
-	}; 
+[ 
+	  [ 'orderBy', ( prop, order = "ASC" ) => ( { prop, order } ) ] 
+	, [ 'where', where => where ] 
+	, [ 'limit', ( limit, start = 0 ) => ( { limit, start } ) ] 
+	, [ 'select', ( ... ar ) => ar ] 
+	] 
+.forEach( ( [ p, F ] ) => 
+	ActiveRecord[ p ] = ( p => ( function( ... ar ) {
+		this .result .query[ p ] = F .apply( this, ar ); 
+		return this; 
+		} )( p )
+	); 
 
 ActiveRecord .result ._orderBy = function ( prop, order ) { 
 	
