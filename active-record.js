@@ -33,8 +33,8 @@ ActiveRecord .limit = function ( limit, start = 0 ) {
 	return this; 
 	}; 
 
-ActiveRecord .select = function () { 
-	this .result .query .select = arguments; 
+ActiveRecord .select = function ( ... ar ) { 
+	this .result .query .select = ar; 
 	return this; 
 	}; 
 
