@@ -25,10 +25,12 @@ ActiveRecord .result = {
 	, [ 'select', ( ... ar ) => ar ] 
 	] 
 .forEach( ( [ p, F ] ) => 
-	ActiveRecord[ p ] = ( p => ( function( ... ar ) { 
-		this .result .query[ p ] = F .apply( this, ar ); 
-		return this; 
-		} ) )( p ) 
+	ActiveRecord[ p ] = ( p => ( 
+		function( ... ar ) { 
+			this .result .query[ p ] = F .apply( this, ar ); 
+			return this; 
+			} ) 
+		)( p ) 
 	); 
 
 ActiveRecord .result ._orderBy = function ( prop, order ) { 
