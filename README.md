@@ -1,5 +1,5 @@
 ![ActiveRecord](https://github.com/aykutkardas/Active-Record/blob/master/logo.png?raw=true)
-
++ ( arrow function verstion ) 
 
 ### Example
 ```js
