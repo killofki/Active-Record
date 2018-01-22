@@ -55,30 +55,24 @@ ActiveRecord .result ._where = function () {
 		, temp    = [] 
 		, ortemp  = [] 
 		, step    = 0 
-		, key 
 		; 
 	
 	where = where .length && typeof where === "object" ? where : [ where ]; 
 	
 	for ( var i = 0; i < where .length; i++ ) { 
-		for ( key in where[ i ] ) { 
-			
+		Object .keys( where[ i ] ) .forEach( key => {
 			if ( step > 0 ) { 
 				data = [] .concat( temp ); 
 				temp = []; 
 				} 
-			
 			data .forEach( ( v, j ) => { 
 				if ( v[ key ] === where[ i ][ key ] && temp .indexOf( v ) === -1 ) { 
 					temp .push( v ); 
 					this .list .push( j ); 
 					} 
 				} ); 
-			
 			step++; 
-			
-			
-			} 
+			} ); 
 		
 		temp .forEach( v => ortemp .indexOf( v ) === -1 && ortemp .push( v ) ); 
 		data = [] .concat( this .data ); 
@@ -121,16 +115,12 @@ ActiveRecord .result ._select = function ( select ) {
 	}; // -- ._select 
 
 ActiveRecord .get = function ( data ) { 
-	
-	if ( "object" === typeof data && data .length ) { 
-		this .result .data = data; 
-		} 
-	else { 
+	if ( ! ( "object" === typeof data && data .length ) ) { 
 		throw `The data is not an object: .get(${ JSON .stringify( data ) })`; 
 		} 
 	
+	this .result .data = data; 
 	var Query = this .result .query; 
-	
 	[ 
 		  [ 'orderBy', ( tr, o ) => tr ._orderBy( o .prop, o .order ) ] 
 		, [ 'where', ( tr, o ) => tr ._where( o ) ] 
